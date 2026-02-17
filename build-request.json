@@ -1,0 +1,211 @@
+{
+  "kind": "build_request",
+  "title": "Upgrade Order & Contact UX: location selection, WhatsApp order CTA, royal-style contact form, and food-circle floaters",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-46",
+      "text": "Update the Order page layout so the “Quick Contact” block is moved to the bottom area of the Order page and is restyled into a distinct logo-style layout (show a prominent logo/emblem area + the quick actions), while preserving the existing WhatsApp and phone links.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "in orders section Quick Contact is go the down area of the page in differnt format with logo like that and also differnt manner also"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On /order, “Quick Contact” appears below the cart summary and delivery areas content (bottom portion of the page).",
+        "The Quick Contact block includes a visible logo/emblem area and presents WhatsApp + phone actions in a clearly different layout than the current card style.",
+        "WhatsApp and phone links still function (wa.me and tel: links open correctly)."
+      ]
+    },
+    {
+      "id": "REQ-47",
+      "text": "Add a required delivery location selection step on the Order page that the user must complete before they can place an order (select from delivery areas or enter their area), and include the selected location in the outgoing WhatsApp order message.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "beforing placing the order there must select the location of there addres then in in cart section"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On /order, there is a clear “Delivery Location” selection UI (e.g., dropdown/radio list of DELIVERY_AREAS with an optional “Other area” text field).",
+        "If the user has cart items, the order action is disabled/blocked until a location is selected and valid.",
+        "The selected location is included in the WhatsApp message text generated for placing the order."
+      ]
+    },
+    {
+      "id": "REQ-48",
+      "text": "In the Order page cart summary area, add exactly one prominent green CTA button labeled in English to place the order via WhatsApp; clicking/tapping it opens WhatsApp (wa.me) with the full cart details and the selected delivery location, and does not require going to the Contact page form.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "in cart section there will 1 green button to place the order in whatapp it will goes to whatsapp"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When cart has items on /order, a single green button is visible and clearly primary.",
+        "Clicking/tapping the button opens a new WhatsApp chat via a wa.me link that contains: customer delivery location + item lines + total price.",
+        "If the cart is empty, the WhatsApp order button is not shown (or is disabled with clear English helper text)."
+      ]
+    },
+    {
+      "id": "REQ-49",
+      "text": "Add a “Payment Options” text-only section after the WhatsApp order CTA on the Order page that presents payment method wording with a lightweight animated text effect (no payment integration).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "then after that section payement option methon only in the wording in animated method also"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On /order, a “Payment Options” section appears after the order CTA area.",
+        "The section is text-only (no payment gateway, no real transaction flow).",
+        "The payment wording uses a subtle animation that respects reduced-motion settings."
+      ]
+    },
+    {
+      "id": "REQ-50",
+      "text": "Make the primary contact phone number significantly more visible across the site (at least in the header and on Order/Contact pages) with clear English labeling and tap-to-call behavior.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "the contact Number is more visbleable"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The header includes a clearly visible phone number element (or “Call” element) that uses a tel: link.",
+        "Order and Contact pages include a highly visible phone number block (not buried in secondary text).",
+        "Phone number presentation remains readable on mobile and does not break the header layout."
+      ]
+    },
+    {
+      "id": "REQ-51",
+      "text": "Redesign the Contact page form into a distinct old-style/royal (king-era) aesthetic while keeping it technically solid and accessible; include both (1) a mobile-message style sending option and (2) an email sending option, each producing a working client-side action.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "in contact us the form make it as different asthetting format like old model format with mobile messege and also email sendin option like king ruling time scenarion"
+        ]
+      },
+      "acceptanceCriteria": [
+        "/contact displays a redesigned form with a clearly different royal/antique visual treatment compared to the current card form (e.g., parchment, seal, ornamental borders).",
+        "The user can choose a send method: “Send via WhatsApp” (mobile-message style) and “Send via Email”.",
+        "WhatsApp option continues to open a wa.me link with the message content.",
+        "Email option opens a mailto: link with subject/body prefilled from the form content.",
+        "Form validation remains in English and prevents submission when required fields are missing/invalid."
+      ]
+    },
+    {
+      "id": "REQ-52",
+      "text": "Update validation and form fields to support the Contact page’s new email sending option (add an email field when email method is selected, validate it, and keep all validation messages in English).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "also email sendin option"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When “Send via Email” is selected, an email address field is shown and validated using the existing validation utilities.",
+        "Invalid email shows an English inline error and blocks the email action.",
+        "WhatsApp-only flow does not require an email address."
+      ]
+    },
+    {
+      "id": "REQ-53",
+      "text": "Add more bouncing “tempting food item” circular decorative elements across all pages, placed only in visually empty areas (not overlapping core content), and ensure the visuals are food items (not generic blobs) while respecting reduced-motion settings.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "then in empty places the bouncing tempting in circle format i want more like that in the page in only on the empty areas",
+          "in all page that bouncing food in circle shape only that must contain the tempting food items only make it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All main routes (/, /menu, /about, /order, /contact) include additional circular bouncing food-item decor placed in empty spaces without covering text/buttons.",
+        "Decor is consistently circular and uses food imagery (not abstract gradients-only).",
+        "When the user prefers reduced motion, the decorative bouncing/float animations are disabled or significantly reduced."
+      ]
+    },
+    {
+      "id": "REQ-54",
+      "text": "Ensure the updated Order and Contact pages are SEO-friendly and use clear crawlable English content structure (headings + descriptive text), and update per-route metadata as needed to reflect the new Order/Contact content.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "make it is all in SEO optimizes content  and technically good"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Order and Contact pages contain meaningful English on-page copy (not only UI labels) describing ordering, delivery location selection, and contact methods.",
+        "Heading structure is logical (one primary page heading and appropriate subheadings).",
+        "Route metadata for /order and /contact remains accurate after the UI changes (title/description/OG still match the page content)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend must not modify files under frontend/src/components/ui (Shadcn components are read-only).",
+    "Frontend must not modify immutable hook/bootstrap files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
+    "Backend is single-actor Motoko; do not introduce additional backend services. (This change should be frontend-only.)",
+    "No real payment integration; “Payment Options” must remain text-only wording with animation."
+  ],
+  "nonGoals": [
+    "Implementing real online payments or storing payment details.",
+    "Sending emails via a server/email provider; email sending must be client-side (mailto).",
+    "Adding third-party authentication providers beyond Internet Identity."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Circular food icon illustration/photo: crispy dosa in a round frame, transparent background (food-circle-dosa.dim_256x256.png)",
+      "Circular food icon illustration/photo: idli with chutney in a round frame, transparent background (food-circle-idli.dim_256x256.png)",
+      "Circular food icon illustration/photo: vada in a round frame, transparent background (food-circle-vada.dim_256x256.png)",
+      "Circular food icon illustration/photo: sambar rice in a round frame, transparent background (food-circle-sambar-rice.dim_256x256.png)",
+      "Circular food icon illustration/photo: chicken curry in a round frame, transparent background (food-circle-chicken-curry.dim_256x256.png)",
+      "Circular food icon illustration/photo: South Indian mixture/snack in a round frame, transparent background (food-circle-mixture.dim_256x256.png)",
+      "Royal parchment texture background, warm beige/brown, subtle grain (royal-parchment-bg.dim_1600x900.png)",
+      "Ornamental royal frame/border graphic, transparent background (royal-ornamental-frame.dim_1200x800.png)",
+      "Wax seal emblem graphic, deep red, transparent background (royal-wax-seal.dim_512x512.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "Use English for all user-facing text."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}
