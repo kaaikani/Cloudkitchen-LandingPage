@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+
+  "homepage": "https://kaaikani.github.io/Cloudkitchen-LandingPage/",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -34,5 +37,4 @@
   "engines": {
     "node": "18.x"
   }
-  
 }
