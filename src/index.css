@@ -1,0 +1,406 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.75rem;
+        --header-height: 80px;
+        /* Warm palette for Cloud Kitchen */
+        --background: 0.98 0.01 40;
+        --foreground: 0.25 0.02 30;
+        --card: 1 0 0;
+        --card-foreground: 0.25 0.02 30;
+        --popover: 1 0 0;
+        --popover-foreground: 0.25 0.02 30;
+        /* Warm orange-red primary */
+        --primary: 0.58 0.18 35;
+        --primary-foreground: 0.98 0.01 40;
+        /* Warm yellow secondary */
+        --secondary: 0.88 0.12 75;
+        --secondary-foreground: 0.35 0.03 40;
+        --muted: 0.95 0.01 50;
+        --muted-foreground: 0.55 0.02 35;
+        /* Warm accent - deep orange */
+        --accent: 0.65 0.15 45;
+        --accent-foreground: 0.98 0.01 40;
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 0.98 0.01 40;
+        --border: 0.90 0.02 45;
+        --input: 0.90 0.02 45;
+        --ring: 0.58 0.18 35;
+    }
+
+    .dark {
+        --background: 0.20 0.02 30;
+        --foreground: 0.95 0.01 50;
+        --card: 0.25 0.02 30;
+        --card-foreground: 0.95 0.01 50;
+        --popover: 0.22 0.02 30;
+        --popover-foreground: 0.95 0.01 50;
+        --primary: 0.68 0.16 40;
+        --primary-foreground: 0.98 0.01 40;
+        --secondary: 0.35 0.03 40;
+        --secondary-foreground: 0.95 0.01 50;
+        --muted: 0.30 0.02 35;
+        --muted-foreground: 0.70 0.02 40;
+        --accent: 0.55 0.14 50;
+        --accent-foreground: 0.98 0.01 40;
+        --destructive: 0.50 0.20 25;
+        --destructive-foreground: 0.95 0.01 50;
+        --border: 0.35 0.02 35;
+        --input: 0.35 0.02 35;
+        --ring: 0.68 0.16 40;
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', Georgia, serif;
+    }
+}
+
+@layer utilities {
+    /* Animation keyframes */
+    @keyframes bounce-fade-in {
+        0% {
+            opacity: 0;
+            transform: translateY(-30px) scale(0.9);
+        }
+        50% {
+            transform: translateY(10px) scale(1.02);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes slide-in-right {
+        0% {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slide-in-left {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        25% {
+            transform: translateY(-20px) rotate(5deg);
+        }
+        50% {
+            transform: translateY(-10px) rotate(-5deg);
+        }
+        75% {
+            transform: translateY(-15px) rotate(3deg);
+        }
+    }
+
+    @keyframes food-float {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg) scale(1);
+        }
+        25% {
+            transform: translateY(-15px) rotate(8deg) scale(1.05);
+        }
+        50% {
+            transform: translateY(-25px) rotate(-8deg) scale(0.95);
+        }
+        75% {
+            transform: translateY(-10px) rotate(5deg) scale(1.02);
+        }
+    }
+
+    @keyframes glow-pulse {
+        0%, 100% {
+            box-shadow: 0 0 20px rgba(255, 120, 60, 0.3);
+        }
+        50% {
+            box-shadow: 0 0 30px rgba(255, 120, 60, 0.6);
+        }
+    }
+
+    @keyframes logo-glow {
+        0%, 100% {
+            filter: drop-shadow(0 0 8px rgba(255, 120, 60, 0.4));
+        }
+        50% {
+            filter: drop-shadow(0 0 16px rgba(255, 120, 60, 0.7));
+        }
+    }
+
+    @keyframes search-expand {
+        0% {
+            opacity: 0;
+            width: 0;
+        }
+        100% {
+            opacity: 1;
+            width: auto;
+        }
+    }
+
+    @keyframes scale-bounce {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes fade-in-up {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes tick {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.3);
+        }
+    }
+
+    @keyframes fly-to-cart {
+        0% {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+        }
+        50% {
+            opacity: 0.8;
+            transform: translate(calc(var(--fly-x) * 0.5), calc(var(--fly-y) * 0.5)) scale(0.5);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(var(--fly-x), var(--fly-y)) scale(0.2);
+        }
+    }
+
+    @keyframes green-bounce {
+        0%, 100% {
+            transform: translateY(0) scale(1);
+            opacity: 0.6;
+        }
+        50% {
+            transform: translateY(-20px) scale(1.1);
+            opacity: 0.8;
+        }
+    }
+
+    @keyframes payment-text {
+        0%, 100% {
+            opacity: 0.7;
+            transform: translateX(0);
+        }
+        50% {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+    }
+
+    /* Animation classes with will-change for performance */
+    .animate-bounce-fade-in {
+        animation: bounce-fade-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .animate-slide-in-right {
+        animation: slide-in-right 0.6s ease-out forwards;
+    }
+
+    .animate-slide-in-left {
+        animation: slide-in-left 0.6s ease-out forwards;
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+        will-change: transform;
+    }
+
+    .animate-food-float {
+        animation: food-float 8s ease-in-out infinite;
+        will-change: transform;
+    }
+
+    .animate-glow-pulse {
+        animation: glow-pulse 2s ease-in-out infinite;
+    }
+
+    .animate-logo-glow {
+        animation: logo-glow 3s ease-in-out infinite;
+    }
+
+    .animate-search-expand {
+        animation: search-expand 0.3s ease-out forwards;
+    }
+
+    .animate-scale-bounce {
+        animation: scale-bounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .animate-fade-in-up {
+        animation: fade-in-up 0.6s ease-out forwards;
+        will-change: transform, opacity;
+    }
+
+    .animate-tick {
+        animation: tick 0.3s ease-in-out;
+    }
+
+    .animate-fly-to-cart {
+        animation: fly-to-cart 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        will-change: transform, opacity;
+    }
+
+    .animate-green-bounce {
+        animation: green-bounce 3s ease-in-out infinite;
+    }
+
+    .animate-payment-text {
+        animation: payment-text 3s ease-in-out infinite;
+    }
+
+    /* Delay utilities */
+    .delay-100 {
+        animation-delay: 100ms;
+    }
+
+    .delay-200 {
+        animation-delay: 200ms;
+    }
+
+    .delay-300 {
+        animation-delay: 300ms;
+    }
+
+    .delay-500 {
+        animation-delay: 500ms;
+    }
+
+    /* Book flip effect */
+    .perspective-1000 {
+        perspective: 1000px;
+    }
+
+    .book-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 14/9;
+    }
+
+    .book-flip {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.7s ease-in-out;
+    }
+
+    .book-flip.flipped {
+        transform: rotateY(-15deg);
+    }
+
+    .book-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        transition: opacity 0.7s ease-in-out;
+    }
+
+    .book-front {
+        z-index: 2;
+    }
+
+    .book-back {
+        transform: rotateY(180deg);
+        opacity: 0;
+    }
+
+    .book-flip.flipped .book-front {
+        opacity: 0;
+    }
+
+    .book-flip.flipped .book-back {
+        opacity: 1;
+        transform: rotateY(0deg);
+    }
+
+    /* Reduced motion overrides - disable heavy animations */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+
+        .animate-float,
+        .animate-food-float,
+        .animate-logo-glow,
+        .animate-glow-pulse,
+        .animate-green-bounce,
+        .animate-payment-text {
+            animation: none !important;
+        }
+
+        .animate-logo-glow {
+            filter: drop-shadow(0 0 8px rgba(255, 120, 60, 0.4));
+        }
+
+        .animate-fade-in-up,
+        .animate-bounce-fade-in,
+        .animate-slide-in-right,
+        .animate-slide-in-left,
+        .animate-scale-bounce {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .book-flip,
+        .book-flip.flipped {
+            transform: none !important;
+        }
+
+        .book-back {
+            display: none;
+        }
+    }
+}
